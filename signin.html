@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bejelentkezés</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- JQuery-->
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+  $("#de").show();
+  $("#lg").hide();
+  $("#re").hide();
+  $("#signin").click(function(){
+    $("#de").hide(1000);
+    $("#lg").show();
+
+  });
+  $("#signup").click(function(){
+    $("#de").hide(1000);
+    $("#re").show();
+
+  });
+  $("#signupl").click(function(){
+    $("#lg").hide(1000);
+    $("#re").show();
+
+  });
+  $("#signinr").click(function(){
+    $("#re").hide(1000);
+    $("#lg").show();
+
+  });
+  $("#log").click(function(){
+    var username= $('#username').val();
+    var password= $('#password').val();
+    $.post("login.php",{us:username,ps:password},
+  function(data, status){
+
+  });
+  });
+  $("#reg").click(function(){
+    var email= $('#emailr').val();
+    var username= $('#usernamer').val();
+    var password= $('#passwordr').val();
+    var passwordr= $('#passwordrr').val();
+
+    $.post("registration.php",
+    {em:email,us:username,ps:password,pr:passwordr},
+  function(data, status) {
+    $("#test").html(data);
+
+  });
+  });
+  });
+</script>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container">
+      <div class="navbar-header">
+        <h1>Blog</h1>
+      </div>
+      <div>
+        <ul class="nav navbar-default">
+          <li><a type="button" class="btn btn-light" href="index.html">Főoldal</a></li>
+          <li><a type="button" class="btn btn-light" href="blog.html">Blog</a></li>
+          <li><a type="button" class="btn btn-dark" href="signin.html">Bejelentkezés</a></li>
+        </ul>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+<div class="jumbotron text-center" id="de">
+  <h1>Jelentkezz be !</h1>
+  <h2>Vagy regisztrálj, ha még nincs fiókod!</h2>
+  <button type="button" class="btn btn-success" id="signin">Bejelentkezés</button>
+  <button type="button" class="btn btn-dark" id="signup">Regisztráció</button>
+
+</div>
+<div style="background-color: crimson" id="test">fbefzgfzg</div>
+<!-- Bejelentkezés form-->
+<div class="global-container" id="lg">
+<div class="card login-form">
+<div class="card-body">
+<h1>Bejelentkezés</h1>
+<div class="form-group">
+  <label for="username">Felhasználónév</label>
+  <input type="text" placeholder="felhasználónév" class="form-control form-control-sm" id="username">
+</div>
+<div class="form-group">
+  <label for="password">Jelszó</label>
+  <a href="" style="float: right; font-size: 12px;">Elfelejtetted a jelszódat?</a>
+  <input type="password" placeholder="jelszó" class="form-control form-control-sm" id="password">
+</div>
+<button type="button" class="btn btn-success btn-block" id="log">Bejelentkezés</button>
+<div class="form-group">
+  <p>Nincs még fiókod?</p>
+<button type="button" class="btn btn-dark btn-block" id="signupl">Regisztrálj!</button>
+</div>
+</div>
+
+</div>
+</div>
+<!-- Regisztrációs form-->
+<div class="global-container" id="re">
+<div class="card login-form">
+<div class="card-body">
+<h1>Regisztráció</h1>
+<div class="form-group">
+  <label for="username">E-mail cím</label>
+  <input type="email" placeholder="e-mail cím" class="form-control form-control-sm" id="emailr">
+</div>
+<div class="form-group">
+  <label for="username">Felhasználónév</label>
+  <input type="text" placeholder="felhasználónév" class="form-control form-control-sm" id="usernamer">
+</div>
+<div class="form-group">
+  <label for="password">Jelszó</label>
+  <input type="password" placeholder="jelszó" class="form-control form-control-sm" id="passwordr">
+</div>
+<div class="form-group">
+  <label for="password">Jelszó újra</label>
+  <input type="password" placeholder="jelszó" class="form-control form-control-sm" id="passwordrr">
+</div>
+<button type="button" class="btn btn-success btn-block" id="reg">Regisztráció</button>
+<div class="form-group">
+  <p>Van már fiókod?</p>
+<button type="button" class="btn btn-dark btn-block" id="signinr">Jelentkezz be!</button>
+</div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
