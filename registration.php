@@ -32,9 +32,7 @@ else {
 if(isset($_POST['pr']) && !empty($_POST['pr'])&& $_POST['pr'] == selection($_POST['pr']) && strlen($_POST['pr'])<=40 && strlen($_POST['pr'])>=8){
   $pr=$_POST['pr'];
 }
-else {
-  echo "Nem megfelelö a jelszó!";
-}
+
 //password check
 if($pr==$password)
 {
