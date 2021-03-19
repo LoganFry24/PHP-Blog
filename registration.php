@@ -13,12 +13,18 @@ if(isset($_POST['us']) && !empty($_POST['us'])&& $_POST['us'] == selection($_POS
   $fname=$_POST['us'];
   $check++;
 }
+else if(empty($_POST['us'])){
+  echo '<div class="error">Nem adtál meg egty felhasználónevet cimet!</div>';
+}
 else {
-  echo "Nem megfelelö a Felhasználónév!";
+  echo '<div class="error">Nem megfelelö a Felhasználónév!</div>';
 }
 if(isset($_POST['em']) && !empty($_POST['em'])&& $_POST['em'] == selection($_POST['em']) && strlen($_POST['em'])<=40 && strlen($_POST['em'])>=6){
   $email=$_POST['em'];
   $check++;
+}
+else if(empty($_POST['em'])){
+  echo '<div class="error">Nem adtad meg az e-mail cimet!</div>';
 }
 else {
   echo "Nem megfelelö az e-mail cím!";
@@ -40,7 +46,7 @@ if($pr==$password)
   $lowercase = preg_match('@[a-z]@', $password);
   $number    = preg_match('@[0-9]@', $password);
   if(!$uppercase || !$lowercase || !$number ) {
-    echo 'A jelszónak legalább egy nagy és egy kis betűt illetve egy számot kell tartalmaznia!';
+    echo '<div class="error">A jelszónak legalább egy nagy és egy kis betűt illetve egy számot kell tartalmaznia!</div>';
  }
  else {
    $check++;

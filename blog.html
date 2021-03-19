@@ -4,11 +4,34 @@
   <title>Blog</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
   <!--Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#tname").hide();
+    $("#make").hide();
+    $("#new").show();
+    $("#new").click(function(){
+      $("#new").hide();
+      $("#make").show();
+      $("#tname").show();
+    });
+    $("#make").click(function(){
+      $("#make").hide();
+      $("#tname").hide();
+      $("#new").show();
+      var title=$('#tname').val();
+      $.post("create.php",{t:title},
+      function(data, status) {
+        $("#message").html(data);
+      });
+    });
+  });
+  </script>
 </head>
 <body>
 <div class="container">
@@ -28,6 +51,13 @@
     </div>
   </nav>
 </div>
-
+<div class="jumbotron text-center container-fluid background">
+<div class="blog-form" >
+  <div id="message"></div>
+  <button type="button" class="btn btn-light" id="new">+</button>
+  <input type="text" id="tname">
+  <button type="button" class="btn btn-light" id="make">Topik létrehozása</button>
+</div>
+</div>
 </body>
 </html>

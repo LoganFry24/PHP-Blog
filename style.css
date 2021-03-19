@@ -13,3 +13,26 @@
   border-radius: 10px;
   background-color: WhiteSmoke;
 }
+.title {
+  background-color: white;
+  text-align: center;
+  height: 15vh;
+  font-size: 54px;
+  font-style: normal;
+  padding-top: 20px;
+}
+.error {
+  background-color: rgba(255,203,203,218);
+  border-style: solid;
+  border-width: 1px;
+  border-color: red;
+  color: rgba(199,75,75,129);
+  padding-left: 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+.blog-form {
+  
+}

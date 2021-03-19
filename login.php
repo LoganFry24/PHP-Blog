@@ -11,15 +11,18 @@ if(isset($_POST['us']) && !empty($_POST['us'])&& $_POST['us'] == selection($_POS
   $fname=$_POST['us'];
   $check++;
 }
+elseif (empty($_POST['us'])){
+  echo '<div class="error">Addj meg egy felhasználónevet!</div>';
+}
 else {
-  echo "Hibás Felhasználónév!";
+  echo '<div class="error">Hibás Felhasználónév!</div>';
 }
 if(isset($_POST['ps']) && !empty($_POST['ps'])&& $_POST['ps'] == selection($_POST['ps']) && strlen($_POST['ps'])<=40 && strlen($_POST['ps'])>=8){
   $ps=$_POST['ps'];
   $check++;
 }
 else {
-  echo "Hibás jelszó!";
+  echo '<div class="error">Hibás jelszó!</div>';
 }
 if($check==2)
 {
@@ -40,25 +43,23 @@ if($check==2)
          $password=true;
        }
      }
-
      $id++;
    }
    if($us==true && $password==true)
    {
-     echo "chill";
+     echo '<div class="error">chill</div>';
    }
    else if($us==false)
    {
-     echo "Nincs ilyen felhasználó";
+     echo '<div class="error">Nincs ilyen felhasználó!</div>';
    }
    else if($password==false && $us==true){
-     echo "Hibás jelszó!";
+     echo '<div class="error">Hibás jelszó!</div>';
    }
   }
   else if(mysqli_num_rows($result)==0){
-   echo "Adatbázis hiba!";
+   echo '<div class="error">Adatbázis hiba!</div>';
  }
-
 }
 if(isset($db))
 {
