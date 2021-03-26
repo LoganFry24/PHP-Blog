@@ -11,7 +11,7 @@ function selection($str) {
   return $str;
 }
 $s=false;
-if(isset($_POST['t']) && !empty($_POST['t']) && strlen($_POST['t']) <= 40 && $_POST['t'] == selection($_POST['t'])){
+if(isset($_POST['t']) && !empty($_POST['t']) && strlen($_POST['t']) <= 40 && strlen($_POST['t']) >= 2 && $_POST['t'] == selection($_POST['t'])){
   $title=$_POST['t'];
   $s=true;
 }
@@ -34,7 +34,7 @@ if($search=mysqli_query($db,$a))
     $did=$id."_table";
     $up="UPDATE topik SET database_id='$did' WHERE id='$id'";
     mysqli_query($db,$up) or die ('<div class="error">Hiba!'.$db->error.'</div>');
-    $create="CREATE TABLE IF NOT EXISTS ".$did." (`id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, `date` date NOT NULL, `name` text COLLATE utf8mb4_hungarian_ci NOT NULL, `text` text COLLATE utf8mb4_hungarian_ci NOT NULL)";
+    $create="CREATE TABLE IF NOT EXISTS ".$did." (`id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, `date` datetime NOT NULL, `name` text COLLATE utf8mb4_hungarian_ci NOT NULL, `text` text COLLATE utf8mb4_hungarian_ci NOT NULL)";
     $db->query($create) or die ('<div class="error">Hiba!:'.$create.'</div>');
     echo "Topik létrehozva!";
   }

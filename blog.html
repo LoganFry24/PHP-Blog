@@ -14,22 +14,40 @@
   $(document).ready(function(){
     $("#tname").hide();
     $("#make").hide();
-    $("#new").show();
-    $("#new").click(function(){
-      $("#new").hide();
+    $("#comment").hide();
+    $("#commit").hide();
+    $("#newt").show();
+    $("#newc").show();
+    $("#newt").click(function(){
+      $("#newt").hide();
       $("#make").show();
       $("#tname").show();
     });
     $("#make").click(function(){
       $("#make").hide();
       $("#tname").hide();
-      $("#new").show();
+      $("#newt").show();
       var title=$('#tname').val();
       $.post("create.php",{t:title},
       function(data, status) {
         $("#message").html(data);
       });
     });
+    $("#newc").click(function(){
+      $("#newc").hide();
+      $("#comment").show();
+      $("#commit").show();
+    });
+    $("#commit").click(function(){
+      $("#comment").hide();
+      $("#commit").hide();
+      $("#newc").show();
+      var com =$('#comment').val();
+      $.post("comment.php",{c:com},
+      function(data, status) {
+        $("#message").html(data);
+      });
+      });
   });
   </script>
 </head>
@@ -53,10 +71,16 @@
 </div>
 <div class="jumbotron text-center container-fluid background">
 <div class="blog-form" >
+  <h1>Új Topik létrehozása</h1>
   <div id="message"></div>
-  <button type="button" class="btn btn-light" id="new">+</button>
-  <input type="text" id="tname">
+  <button type="button" class="btn btn-light" id="newt">+</button>
+  <input type="text" id="tname" min="2" max="40">
   <button type="button" class="btn btn-light" id="make">Topik létrehozása</button>
+  <h1>Komment a topikhoz</h1>
+
+  <button type="button" class="btn btn-light" id="newc">+</button>
+  <input type="text" id="comment" min="2" max="40">
+  <button type="button" class="btn btn-light" id="commit">Küldés</button>
 </div>
 </div>
 </body>
