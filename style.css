@@ -1,9 +1,24 @@
+table {
+  width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(233, 236, 239);
+}
+.content {
+  padding-top: 90px;
+}
 .global-container {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 150px;
+  padding-top: 70px;
   font-size: 14px;
   margin-top: 30px;
 }
@@ -33,6 +48,24 @@
   margin-bottom: 15px;
   margin-top: 10px;
 }
-.blog-form {
-  
+.info {
+  text-align: center;
+  float: left;
+  max-width: 80px;
+  display: table-cell;
+  vertical-align: top;
+  margin-right: 30px;
+}
+.com{
+  text-align: left;
+  float: center;
+  display: table-cell;
+  vertical-align: top;
+
+}
+.index {
+  text-align: center;
+  float: center;
+  display: table-cell;
+  vertical-align: top;
 }

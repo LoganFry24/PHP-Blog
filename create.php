@@ -34,7 +34,7 @@ if($search=mysqli_query($db,$a))
     $did=$id."_table";
     $up="UPDATE topik SET database_id='$did' WHERE id='$id'";
     mysqli_query($db,$up) or die ('<div class="error">Hiba!'.$db->error.'</div>');
-    $create="CREATE TABLE IF NOT EXISTS ".$did." (`id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, `date` datetime NOT NULL, `name` text COLLATE utf8mb4_hungarian_ci NOT NULL, `text` text COLLATE utf8mb4_hungarian_ci NOT NULL)";
+    $create="CREATE TABLE IF NOT EXISTS ".$did." (`id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, `date` datetime NOT NULL, `name` text(11) COLLATE utf8mb4_hungarian_ci NOT NULL, `text` text COLLATE utf8mb4_hungarian_ci NOT NULL)";
     $db->query($create) or die ('<div class="error">Hiba!:'.$create.'</div>');
     echo "Topik létrehozva!";
   }

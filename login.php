@@ -7,19 +7,22 @@ function selection($str) {
   return $str;
 }
 $check=0;
-if(isset($_POST['us']) && !empty($_POST['us'])&& $_POST['us'] == selection($_POST['us']) && strlen($_POST['us'])<=40 ){
+if(isset($_POST['us']) && !empty($_POST['us'])&& $_POST['us'] == selection($_POST['us']) ){
   $fname=$_POST['us'];
   $check++;
 }
-elseif (empty($_POST['us'])){
-  echo '<div class="error">Addj meg egy felhasználónevet!</div>';
+else if (empty($_POST['us'])){
+  echo '<div class="error">Hiányzik a Felhasználónév!</div>';
 }
 else {
   echo '<div class="error">Hibás Felhasználónév!</div>';
 }
-if(isset($_POST['ps']) && !empty($_POST['ps'])&& $_POST['ps'] == selection($_POST['ps']) && strlen($_POST['ps'])<=40 && strlen($_POST['ps'])>=8){
+if(isset($_POST['ps']) && !empty($_POST['ps'])&& $_POST['ps'] == selection($_POST['ps']) ){
   $ps=$_POST['ps'];
   $check++;
+}
+else if (empty($_POST['ps'])){
+  echo '<div class="error">Nem adtál meg jelszót!</div>';
 }
 else {
   echo '<div class="error">Hibás jelszó!</div>';
@@ -47,7 +50,7 @@ if($check==2)
    }
    if($us==true && $password==true)
    {
-     echo '<div class="error">chill</div>';
+     echo '<div class="error">chill</div>';//ideiglenes sikeres bejelentkezés
    }
    else if($us==false)
    {

@@ -10,8 +10,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
+  <script src="title.js"></script>
+  <script type="text/javascript">
   $(document).ready(function(){
+    //$("#test").hide();
     $("#tname").hide();
     $("#make").hide();
     $("#comment").hide();
@@ -52,10 +54,10 @@
   </script>
 </head>
 <body>
-<div class="container">
-  <nav class="navbar navbar-default">
-    <div class="container">
-    <div class="navbar-header">
+<div class="container" style="background: white; margin-bottom: 0;">
+  <nav class="navbar navbar-default fixed-top" style="background: white; margin-bottom: 0;">
+    <div class="container" style="background: white; margin-bottom: 0;">
+    <div class="navbar-header" id="head">
       <h1>Blog</h1>
     </div>
     <div>
@@ -69,7 +71,15 @@
     </div>
   </nav>
 </div>
-<div class="jumbotron text-center container-fluid background">
+<!-- welcome mezö-->
+<div class="content" style="margin-bottom: 0;">
+<div class="jumbotron text-center max" id="welcome" style="margin-bottom: 0; border-radius: 0px;">
+  <h1>Üdv a blogon!</h1>
+  <p>Ha hozzá szeretnél szólni, akkor először jelentkezz be, vagy regisztrálj!</p>
+  <a type="button" class="btn btn-success" href="signin.html">Bejelentkezés</a>
+  <a type="button" class="btn btn-dark" href="blog.html">Regisztráció</a>
+</div>
+<div class="jumbotron text-center container-fluid background" style="margin-bottom: 0; border-radius: 0px;" id="test">
 <div class="blog-form" >
   <h1>Új Topik létrehozása</h1>
   <div id="message"></div>
@@ -81,6 +91,43 @@
   <button type="button" class="btn btn-light" id="newc">+</button>
   <input type="text" id="comment" min="2" max="40">
   <button type="button" class="btn btn-light" id="commit">Küldés</button>
+</div>
+</div>
+<div class="jumbotron" style="display: table; width: 100%; background: white; margin-bottom: 0; border-radius: 0px;">
+  <h1>Topikok:</h1>
+  <table>
+  <tr>
+    <th>Topik neve</th>
+    <th>Létrehozó</th>
+    <th>Létrehózás Dátuma</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+</table>
+</div>
+<div class="jumbotron" style="display: table; width: 100%; margin-bottom: 0; border-radius: 0px;">
+  <div class="info"> <h5>#1</h5> <h4>Admin</h4> <p>2021.03.24 11:50:57</p></div>
+    <div class="com">
+        <p class="lead">I am writing to you in connection with the finacial aid programs. I graduated in Software Engineer major from BME in Budapest. I learned high level c ++ programming and making 3D engine from scratch. Also I used to work as WEB developer with using Java and C# languages. My plan is to get a master’s degree. After that, I want to be a team leader at a big game development company, but I do not enough work experience yet.  In San Francisco and in Los Angeles, I have found college where I can master this profession.
+The problem is, I do not have enough money to allow this dream for myself. It is more expensive than I thought. In my opinion, student loans are traps. So I need another solution like a scholarship, if it is possible.
+I assume my last resort is to ask you about this opportunity. I would appreciate it if you could tell me how I could get a scholarship.
+I am avaliable at this email address: random@gmail.com.
+I look forward to your reply.
+</p>
+    </div>
 </div>
 </div>
 </body>

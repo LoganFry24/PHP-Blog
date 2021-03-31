@@ -9,17 +9,17 @@ function selection($str) {
 $check=0;
 $password="";
 $pr="";
-if(isset($_POST['us']) && !empty($_POST['us'])&& $_POST['us'] == selection($_POST['us']) && strlen($_POST['us'])<=40 && strlen($_POST['us'])>=3){
+if(isset($_POST['us']) && !empty($_POST['us'])&& $_POST['us'] == selection($_POST['us']) && strlen($_POST['us'])<=11 && strlen($_POST['us'])>=3){
   $fname=$_POST['us'];
   $check++;
 }
 else if(empty($_POST['us'])){
-  echo '<div class="error">Nem adtál meg egty felhasználónevet cimet!</div>';
+  echo '<div class="error">Nem adtál meg egy felhasználónevet!</div>';
 }
 else {
   echo '<div class="error">Nem megfelelö a Felhasználónév!</div>';
 }
-if(isset($_POST['em']) && !empty($_POST['em'])&& $_POST['em'] == selection($_POST['em']) && strlen($_POST['em'])<=40 && strlen($_POST['em'])>=6){
+if(isset($_POST['em']) && !empty($_POST['em'])&& $_POST['em'] == selection($_POST['em']) && strlen($_POST['em'])<=40 && strlen($_POST['em'])>=6 && strpos($_POST['em'], "@")>0 && strpos($_POST['em'], ".")>0){
   $email=$_POST['em'];
   $check++;
 }
@@ -27,34 +27,43 @@ else if(empty($_POST['em'])){
   echo '<div class="error">Nem adtad meg az e-mail cimet!</div>';
 }
 else {
-  echo "Nem megfelelö az e-mail cím!";
+  echo '<div class="error">Nem megfelelö formátumu az e-mail cím!</div>';
 }
-if(isset($_POST['ps']) && !empty($_POST['ps'])&& $_POST['ps'] == selection($_POST['ps']) && strlen($_POST['ps'])<=40 && strlen($_POST['ps'])>=8){
+if(isset($_POST['ps']) && !empty($_POST['ps'])&& $_POST['ps'] == selection($_POST['ps']) && strlen($_POST['ps'])<=20 && strlen($_POST['ps'])>=8){
   $password=$_POST['ps'];
 }
-else {
-  echo "Nem megfelelö a jelszó!";
+else if(empty($_POST['ps'])){
+  echo '<div class="error">Nem adtál meg jelszót!</div>';
 }
-if(isset($_POST['pr']) && !empty($_POST['pr'])&& $_POST['pr'] == selection($_POST['pr']) && strlen($_POST['pr'])<=40 && strlen($_POST['pr'])>=8){
+else {
+  echo '<div class="error">Nem megfelelö formátumu a jelszó!</div>';
+}
+if(isset($_POST['pr']) && !empty($_POST['pr'])&& $_POST['pr'] == selection($_POST['pr']) ){
   $pr=$_POST['pr'];
+  //password check
+  if($pr==$password)
+  {
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+    if(!$uppercase || !$lowercase || !$number ) {
+      echo '<div class="error">A jelszónak legalább egy nagy és egy kis betűt illetve egy számot kell tartalmaznia!</div>';
+   }
+   else {
+     $check++;
+   }
+  }
+  else if(!empty($_POST['ps'])){
+    
+  }
+  else {
+    echo '<div class="error">A jelszavak nem egyeznek!</div>';
+  }
+}
+else if(empty($_POST['pr'])){
+  echo '<div class="error">Add meg jelszót újra!</div>';
 }
 
-//password check
-if($pr==$password)
-{
-  $uppercase = preg_match('@[A-Z]@', $password);
-  $lowercase = preg_match('@[a-z]@', $password);
-  $number    = preg_match('@[0-9]@', $password);
-  if(!$uppercase || !$lowercase || !$number ) {
-    echo '<div class="error">A jelszónak legalább egy nagy és egy kis betűt illetve egy számot kell tartalmaznia!</div>';
- }
- else {
-   $check++;
- }
-}
-else {
-  echo "A jelszavak nem egyeznek!";
-}
 //check userdata
 $success=0;
 if($check==3)
@@ -81,19 +90,18 @@ if($check==3)
    }
    if($cus==true)
    {
-     echo "A felhasználónév már foglalt!";
+     echo '<div class="error">A felhasználónév már foglalt!</div>';
    }
    else {
      $success++;
    }
    if($cem==true)
    {
-     echo "Ezen az e-mail címen már regisztráltak!";
+     echo '<div class="error">Ezen az e-mail címen már regisztráltak!</div>';
    }
    else {
      $success++;
    }
-
   }
   else if(mysqli_num_rows($result)==0){
    $success=2;
@@ -103,13 +111,11 @@ if($success==2)
 {
   $query ="INSERT INTO `accounts` (`username`,`email`,`password`) VALUES ('".$fname."','".$email."','".$password."')";
   $db->query($query) or die ("Hiba a kapcsolatban!");
-echo "Sikeres Regisztráció!";
+  echo '<div class="error">Sikeres Regisztráció!</div>';
 }
   if(isset($db))
   {
     $db->close();
     $result->free();
   }
-
-
 ?>

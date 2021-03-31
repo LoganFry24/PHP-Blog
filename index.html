@@ -10,57 +10,67 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="style.css">
+  <script src="title.js"></script>
 </head>
 <body>
   <!-- menu -->
-<div class="container">
-  <nav class="navbar navbar-default  fixed-top">
-    <div class="container">
-    <div class="navbar-header">
+<div class="container" style="background: white; margin-bottom: 0;">
+  <nav class="navbar navbar-default  fixed-top" style="background: white; margin-bottom: 0;">
+    <div class="container" style="background: white; margin-bottom: 0;">
+    <div class="navbar-header" id="head" style="background: white; margin-bottom: 0;">
       <h1>Blog</h1>
     </div>
 
-    <div>
-      <ul class="nav navbar-default">
+    <div style="background: white; margin-bottom: 0;">
+      <ul class="nav navbar-default" >
         <li><a type="button" class="btn btn-dark">Főoldal</a></li>
         <li><a type="button" class="btn btn-light" href="blog.html">Blog</a></li>
         <li><a type="button" class="btn btn-light" href="signin.html">Bejelentkezés</a></li>
         <div id="header"><li class="nav-item dropdown">
+
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         Fiókod
       </a>
-      <div class="dropdown-menu">
-        admin
+      <div class="dropdown-menu" style=" text-align: center;">
+        <h5>admin</h5>
+        <hr style="margin: 0px;"></hr>
         <a class="dropdown-item" href="#">Topikjaid</a>
         <a class="dropdown-item" href="#">Profilod</a>
         <a class="dropdown-item" href="#">Kijelentkezés</a>
       </div>
-    </li></div>
+    </li>
+  </div>
       </ul>
 
       </div>
     </div>
   </nav>
 </div>
+<div class="content" style="margin-bottom: 0;">
 <!-- welcome mezö-->
-<div class="jumbotron text-center max" id="welcome">
+<div class="jumbotron text-center max" id="welcome" style="margin-bottom: 0; border-radius: 0px;">
   <h1>Üdv a blogon!</h1>
   <p>Ha hozzá szeretnél szólni, akkor először jelentkezz be!</p>
   <a type="button" class="btn btn-success" href="signin.html">Bejelentkezés</a>
   <a type="button" class="btn btn-dark" href="blog.html">Blog megtekintése</a>
 </div>
 <!--cím-->
-<section class="title .container-fluid">
-Legutóbbi Topik
-</section>
-<div class="jumbotron text-center" id="last">
-
+<div class="jumbotron" style="display: table; width: 100%; background: white; margin-bottom: 0; border-radius: 0px;">
+<div class="index">
+<h1>Legutóbbi Topik:</h1>
 </div>
-<section class="title .container-fluid">
-Legnépszerűbb Topik
-</section>
-<div class="jumbotron text-center" id="famous">
-
+</div>
+<div class="jumbotron text-center" style="margin-bottom: 0; border-radius: 0px;">
+<h1 id="last">Nincs adat</h1>
+</div>
+<div class="jumbotron" style="display: table; width: 100%; background: white; margin-bottom: 0; border-radius: 0px;">
+<div class="index">
+<h1>Legnépszerűbb Topik:</h1>
+</div>
+</div>
+<div class="jumbotron text-center " style="margin-bottom: 0; border-radius: 0px; ">
+<h1 id="famous">Nincs adat</h1>
+</div>
 </div>
 </body>
 </html>
