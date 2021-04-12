@@ -1,4 +1,5 @@
 <?php
+if(isset($_POST['us'])){
 //input
 function selection($str) {
   $str=strip_tags($str);
@@ -44,13 +45,20 @@ if($check==2)
        if($table[$id]->password==$ps)
        {
          $password=true;
+         $email=$table[$id]->email;
+         $date=$table[$id]->date;
        }
      }
      $id++;
    }
    if($us==true && $password==true)
    {
-     echo '<div class="error">chill</div>';//ideiglenes sikeres bejelentkezés
+     session_start();
+     $_SESSION["username"] = $fname;
+     $_SESSION["email"] = $email;
+     $_SESSION["date"] = $date;
+     $_SESSION["mes"] = "log";
+     echo "success";
    }
    else if($us==false)
    {
@@ -68,5 +76,9 @@ if(isset($db))
 {
   $db->close();
   $result->free();
+}
+}
+else {
+  header("location: index.php");
 }
 ?>

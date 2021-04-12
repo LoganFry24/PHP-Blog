@@ -1,9 +1,12 @@
 <?php
+session_start();
+if(isset($_SESSION["username"]))
+{
 include("connection.php");
 //topik data
 $date=date("Y-m-d",time());
 $com=0;
-$author="felhasználónév";
+$author=$_SESSION["username"];
 function selection($str) {
   $str=strip_tags($str);
   $str=stripslashes($str);
@@ -42,4 +45,9 @@ if($search=mysqli_query($db,$a))
 }
 }
 $db->close();
+}
+else
+{
+  echo "Nem vagy bejelentkezve!";
+}
 ?>

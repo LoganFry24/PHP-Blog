@@ -1,10 +1,9 @@
 $("#head").show();
-
 $(window).on('scroll', function() {
   var w=window.innerWidth;
   if($(window).scrollTop() && w<500)
   {
-    $("#head").hide(100);
+    $("#head").hide();
   }
   else {
       $("#head").show();
@@ -14,13 +13,10 @@ $(window).on('scroll', function() {
     w=window.innerWidth;
     if($(window).scrollTop() && w<500)
     {
-      $("#head").hide(10000);
+      $("#head").hide();
     }
     else {
         $("#head").show();
     }
   });
 });
-$(document).ready(function(){
-  $("#welcome").hide();
-  });

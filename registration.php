@@ -1,4 +1,6 @@
 <?php
+if(isset($_POST['us'])){
+$date=date("Y-m-d",time());
 //input
 function selection($str) {
   $str=strip_tags($str);
@@ -54,7 +56,7 @@ if(isset($_POST['pr']) && !empty($_POST['pr'])&& $_POST['pr'] == selection($_POS
    }
   }
   else if(!empty($_POST['ps'])){
-    
+
   }
   else {
     echo '<div class="error">A jelszavak nem egyeznek!</div>';
@@ -109,13 +111,23 @@ if($check==3)
 }
 if($success==2)
 {
-  $query ="INSERT INTO `accounts` (`username`,`email`,`password`) VALUES ('".$fname."','".$email."','".$password."')";
+  session_start();
+  $_SESSION["username"] = $fname;
+  $_SESSION["email"] = $email;
+  $_SESSION["date"] = $date;
+  $_SESSION["mes"] = "reg";
+   echo "success";
+  $query ="INSERT INTO `accounts` (`username`,`email`,`password`,`date`) VALUES ('".$fname."','".$email."','".$password."','".$date."')";
   $db->query($query) or die ("Hiba a kapcsolatban!");
-  echo '<div class="error">Sikeres Regisztráció!</div>';
+  //echo '<div class="error">Sikeres Regisztráció!</div>';
 }
   if(isset($db))
   {
     $db->close();
     $result->free();
   }
+}
+else {
+  header("location: index.php");
+}
 ?>
